@@ -41,4 +41,4 @@ This project is open-source to support students and educators.
 * **Pull Requests:** Welcome for documentation or script optimization.
 
 ---
-*Architected by [Your Name] for the Atlanta AI & Robotics Initiative.*
+*Architected by Nolan S. Code for the Atlanta AI & Robotics Initiative.*
