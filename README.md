@@ -1,7 +1,7 @@
 # AARI Edge Infrastructure: Prototype v1
 ### Bare-Metal Edge Gateway for AI & Robotics Education
 
-![Status](https://img.shields.io/badge/Status-Active_Development-green) ![Security](https://img.shields.io/badge/Security-Hardened-blue)
+![Status](https://img.shields.io/badge/Status-Active_Development-green) ![Security](https://img.shields.io/badge/Security-Review_in_Progress-blue)
 
 ## 📡 Mission Overview
 The **Atlanta AI & Robotics Initiative (AARI)** is building a decentralized, hands-on curriculum to teach the next generation of engineers. This repository documents the construction of the **Edge Node Prototype**—a secure, localized data center designed to handle:
@@ -26,7 +26,7 @@ As part of the validation process, this infrastructure implements core CompTIA S
 * **Identity Management:** Key-based SSH authentication (No passwords).
 * **Perimeter Defense:** Custom `iptables` stateful firewall.
 * **Traffic Inspection:** (Upcoming) Suricata IDS integration.
-* **Least Privilege:** User role separation (`moneymaker` vs root).
+* **Least Privilege:** Operator account separation from privileged root access.
 
 ## 🚀 Getting Started
 *See `/docs/ops/` for detailed runbooks.*
@@ -36,7 +36,7 @@ As part of the validation process, this infrastructure implements core CompTIA S
 3.  **Access:** `ssh -i <your-key> user@gateway-ip`
 
 ## 🤝 Contributing
-This project is open-source to support students and educators.
+This project supports hands-on infrastructure learning for students and educators.
 * **Issues:** Please log bugs or security concerns via GitHub Issues.
 * **Pull Requests:** Welcome for documentation or script optimization.
 
