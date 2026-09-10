@@ -1,44 +1,57 @@
-# AARI Edge Infrastructure: Prototype v1
-### Bare-Metal Edge Gateway for AI & Robotics Education
+# AARI Edge Infrastructure
+### Secure edge operations for AI, robotics, and data-center education
 
 ![Status](https://img.shields.io/badge/Status-Active_Development-green) ![Security](https://img.shields.io/badge/Security-Review_in_Progress-blue)
 
-## 📡 Mission Overview
-The **Atlanta AI & Robotics Initiative (AARI)** is building a decentralized, hands-on curriculum to teach the next generation of engineers. This repository documents the construction of the **Edge Node Prototype**—a secure, localized data center designed to handle:
+## Mission
 
-* **Secure Traffic Analysis** (IDS/IPS)
-* **Low-Latency AI Streams** (Computer Vision/Inference)
-* **Network Segmentation** (IoT vs. User Data)
+The Atlanta AI & Robotics Initiative (AARI) builds hands-on infrastructure from the physical layer upward: power and cooling, networking, Linux and systems, containers, cloud, and AI.
 
-## 🏗 Architecture
-This is not a standard consumer router setup. It is an enterprise-grade gateway built on ARM architecture (Raspberry Pi 4), mimicking edge deployments found in industrial IoT and modern cloud-edge scenarios.
+This repository contains public-safe code and documentation for AARI edge nodes. Production addresses, credentials, tokens, infrastructure state, and private network diagrams are intentionally excluded.
 
-### Hardware Bill of Materials (BOM)
-| Component | Spec | Role |
-|-----------|------|------|
-| **Compute** | Raspberry Pi 4 (4GB) | Packet Processing & Logic |
-| **Storage** | 32GB Class 10 SD | OS & Logs |
-| **Network** | Gigabit Ethernet + USB 3.0 NIC | WAN/LAN Segmentation |
-| **Power** | 5V 3A USB-C | Stable Voltage for Peripherals |
+## Active modules
 
-## 🛡 Security Posture (Security+ Implementation)
-As part of the validation process, this infrastructure implements core CompTIA Security+ concepts:
-* **Identity Management:** Key-based SSH authentication (No passwords).
-* **Perimeter Defense:** Custom `iptables` stateful firewall.
-* **Traffic Inspection:** (Upcoming) Suricata IDS integration.
-* **Least Privilege:** Operator account separation from privileged root access.
+### AARI RackSentinel v0
 
-## 🚀 Getting Started
-*See `/docs/ops/` for detailed runbooks.*
+`jetson/racksentinel/` turns an NVIDIA Jetson into a private edge operations node. It:
 
-1.  **Flash OS:** Debian-based (Raspberry Pi OS Lite)
-2.  **Network Config:** See `src/network/interfaces`
-3.  **Access:** `ssh -i <your-key> user@gateway-ip`
+- collects compute, GPU, thermal, memory, storage, and uptime telemetry;
+- evaluates local warning and critical thresholds;
+- retains JSONL evidence when upstream systems are unavailable;
+- provides a private dashboard through an SSH tunnel; and
+- optionally forwards structured events to Splunk HEC over HTTPS.
 
-## 🤝 Contributing
-This project supports hands-on infrastructure learning for students and educators.
-* **Issues:** Please log bugs or security concerns via GitHub Issues.
-* **Pull Requests:** Welcome for documentation or script optimization.
+The first target is an AARI data-center lab. Future inputs include rack inlet and outlet temperature, humidity, airflow, UPS and rack power, and approved RS-485/Modbus sensors.
+
+### Raspberry Pi gateway prototype
+
+The original prototype uses a Raspberry Pi 4 to teach:
+
+- WAN/LAN and IoT segmentation;
+- key-based SSH and least privilege;
+- stateful firewalling; and
+- traffic inspection concepts.
+
+It remains a learning reference while the Jetson becomes the accelerated inference and telemetry platform.
+
+## Security posture
+
+- Key-based SSH only for managed nodes.
+- No direct public exposure of device dashboards.
+- Secrets stay in device-local environment files or an approved secrets manager.
+- Production access passes through the approved firewall and jump-box path.
+- Security testing is limited to systems AARI owns or has written permission to assess.
+
+See [SECURITY.md](SECURITY.md) before contributing.
+
+## Getting started
+
+Start with [Jetson RackSentinel](jetson/racksentinel/README.md).
+
+## Contributing
+
+Issues and pull requests are welcome for documentation, tests, sensor adapters, telemetry parsers, and deployment hardening.
 
 ---
-*Architected by Nolan S. Code for the Atlanta AI & Robotics Initiative.*
+
+Architected by Nolan S. Code for the Atlanta AI & Robotics Initiative.
