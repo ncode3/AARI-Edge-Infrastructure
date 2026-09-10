@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aari-racksentinel"
+version = "0.1.0"
+description = "Jetson edge telemetry and safety monitoring for AARI infrastructure labs"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+racksentinel = "racksentinel.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
