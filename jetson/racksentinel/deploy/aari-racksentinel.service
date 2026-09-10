@@ -1,0 +1,22 @@
+[Unit]
+Description=AARI RackSentinel edge telemetry agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=aari-edge
+Group=aari-edge
+EnvironmentFile=-/etc/aari-racksentinel.env
+ExecStart=/opt/aari-racksentinel/venv/bin/racksentinel serve
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/aari-racksentinel
+
+[Install]
+WantedBy=multi-user.target
+
